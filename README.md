@@ -1,65 +1,82 @@
+# Price Quote Tracker
 
+## Table of Contents
+- [Overview](#overview)
+- [Prerequisites](#prerequisites)
+- [Installation](#installation)
+- [Usage](#usage)
+- [API Documentation](#api-documentation)
+- [Integration Tests](#integration-tests)
+- [Design Questions](#design-questions)
+- [Contributing](#contributing)
+- [License](#license)
 
-### SQL CMD
+## Overview
 
-```sql
-# MySQL 5.7+
+A Simple API that tracks different Providers price quotes for different artifacts, built as a solutio to the infoStrategy asssessment
 
-CREATE TABLE Providers (
-	provider_no int NOT NULL PRIMARY KEY,
-	provider VARCHAR(50)
-);
+## Prerequisites
 
-CREATE TABLE Articles (
-	article_no int NOT NULL PRIMARY KEY,
-	article VARCHAR(50)
-);
+You need to have Python3.xx installed in order to run this application.
 
-CREATE TABLE Prices (
-    price_id INT NOT NULL PRIMARY KEY,
-    price INT,
-    article_no INT,
-    provider_no INT,
-    FOREIGN KEY (article_no) REFERENCES Articles(article_no),
-    FOREIGN KEY (provider_no) REFERENCES Providers(provider_no)
-);
+## Installation
 
-INSERT INTO Providers (provider_no, provider)
-VALUES
-(1, 'Flutterwave'),
-(2, 'Paystack'),
-(3, 'Stripe');
+```bash
+# Clone the repository
+git clone https://github.com/coderboy-exe/info-strat.git
 
-INSERT INTO Articles (article_no, article)
-VALUES
-(101, 'US Dollar'),
-(102, 'EU Pounds'),
-(103, 'EU Euro'),
-(104, 'SWIZ Swiss');
+# Navigate to the project directory
+cd info-strat
 
-INSERT INTO Prices (price_id, price, article_no, provider_no)
-VALUES
-(1, 1000, 101, 1),
-(2, 1500, 101, 2),
-(3, 1200, 102, 1),
-(4, 2000, 104, 3),
-(5, 5000, 103, 2),
-(6, 1800, 101, 1),
-(7, 2100, 102, 3),
-(8, 500, 104, 2);
+# Create and activate your virtual environment (my_env)
+python -m venv my-env
 
-```  
+source my-env/Scripts/activate (Windows --> Assuming you are using a bash terminal)
+source my-env/bin/activate (Linux)
 
-```sql
-SELECT 
-Articles.article_no,
-Articles.article,
-LPAD(Providers.provider_no, 4, '0') AS provider_no,
-Providers.provider,
-Prices.price
-FROM Prices
-JOIN Articles ON Prices.article_no = Articles.article_no
-JOIN Providers ON Prices.provider_no = Providers.provider_no
-ORDER BY Articles.article_no
+# Install dependencies
+pip install -r requirements.txt
+
+# Perform any additional setup steps (database migrations, etc.)
+python manage.py migrate
 
 ```
+
+## Usage
+
+Simply run the dev server
+
+```bash
+# Run the development server
+python manage.py runserver
+```
+
+Access the application at [http://localhost:8000](http://localhost:8000).
+
+
+## API Documentation
+
+Check out the comprehensive Postman documentation [here](https://documenter.getpostman.com/view/27182139/2s9YyvCLSQ)
+
+## Integration Tests
+
+Run the **Integration Tests** folder in the Postman collection
+
+All tests should pass
+
+
+Refer to the [API documentation](https://documenter.getpostman.com/view/27182139/2s9YyvCLSQ) for detailed information as well as examples for each endpoint.
+
+## Design Questions
+
+Solution to the theoretical questionscan be found in the **Answers.md** file [here](Answers.md)
+
+## Contributing
+
+Contributions are highly welcomed.
+
+If you want to contribute to this project, feel free to create a fork, submit an issue, feature request, or pull requests.
+
+## License
+
+This project is free for distribution under the [MIT License](#license).

@@ -55,7 +55,7 @@ In summary, the move to a normalized data model addresses the issues of redundan
 
 ## ANSWER 4
 
-1. **Build the Schema:** Simply run the contents of the file `sql/schema.sql` in order to build the schema and create the tables.
+1. **Build the Schema:** Simply run the contents of the [sql/schema.sql](sql/schema.sql) file in order to build the schema and create the tables.
 
 **Schema (MySQL v5.7)**
 
@@ -104,7 +104,7 @@ In summary, the move to a normalized data model addresses the issues of redundan
       
 ---
 
-2. **Run the Query:** Run the contents of the file `sql/query.sql` to run the query and return the original table.
+2. **Run the Query:** Run the contents of the file [sql/query.sql](sql/query.sql) to run the query and return the original table.
 
 **Query #1**
 
