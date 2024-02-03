@@ -1,12 +1,11 @@
 ## ANSWER 1
 
-## Problems/Disadvantages in the Original List:
+<!-- ## Problems/Disadvantages in the Original List:
 
 Redundancy: The original list has repeated information for the same article and provider.
 Lack of Data Integrity: There's no clear relationship between different entities (e.g., articles, providers).
 Inefficiency: Retrieving specific information may require scanning the entire list, which can be inefficient for large datasets.
-Limited Scalability: The flat structure may not scale well with thousands of entries.
-
+Limited Scalability: The flat structure may not scale well with thousands of entries. -->
 
 ### Problems/Disadvantages in the Original List:
 
@@ -27,7 +26,8 @@ Limited Scalability: The flat structure may not scale well with thousands of ent
    - *Consequence:* Managing and querying data becomes more challenging as the dataset expands, making the system impossible to perform optimally.
 
 
-## ANSWER 3
+
+## ANSWER 2
 
 #TODO
 
@@ -52,7 +52,84 @@ Limited Scalability: The flat structure may not scale well with thousands of ent
 In summary, the move to a normalized data model addresses the issues of redundancy, data integrity, and scalability, providing a more efficient and organized way to manage and query the data. It sets a foundation for a system that can handle growth and changes more effectively.
 
 
+
 ## ANSWER 4
 
-- Simply run the contents of the file `sql/schema.sql` in order to build the schema and create the tables.
-- Run the contents of the file `sql/query.sql` to run the query and return the original table.
+1. **Build the Schema:** Simply run the contents of the file `sql/schema.sql` in order to build the schema and create the tables.
+
+**Schema (MySQL v5.7)**
+
+    CREATE TABLE Providers (
+    	provider_no int NOT NULL PRIMARY KEY,
+    	provider VARCHAR(50)
+    );
+    
+    CREATE TABLE Articles (
+    	article_no int NOT NULL PRIMARY KEY,
+    	article VARCHAR(50)
+    );
+    
+    CREATE TABLE Prices (
+        price_id INT NOT NULL PRIMARY KEY,
+        price INT,
+        article_no INT,
+        provider_no INT,
+        FOREIGN KEY (article_no) REFERENCES Articles(article_no),
+        FOREIGN KEY (provider_no) REFERENCES Providers(provider_no)
+    );
+    
+    INSERT INTO Providers (provider_no, provider)
+    VALUES
+    (1, 'Flutterwave'),
+    (2, 'Paystack'),
+    (3, 'Stripe');
+    
+    INSERT INTO Articles (article_no, article)
+    VALUES
+    (101, 'US Dollar'),
+    (102, 'EU Pounds'),
+    (103, 'EU Euro'),
+    (104, 'SWIZ Swiss');
+    
+    INSERT INTO Prices (price_id, price, article_no, provider_no)
+    VALUES
+    (1, 1000, 101, 1),
+    (2, 1500, 101, 2),
+    (3, 1200, 102, 1),
+    (4, 2000, 104, 3),
+    (5, 5000, 103, 2),
+    (6, 1800, 101, 1),
+    (7, 2100, 102, 3),
+    (8, 500, 104, 2);
+      
+---
+
+2. **Run the Query:** Run the contents of the file `sql/query.sql` to run the query and return the original table.
+
+**Query #1**
+
+    SELECT 
+    Articles.article_no,
+    Articles.article,
+    LPAD(Providers.provider_no, 4, '0') AS provider_no,
+    Providers.provider,
+    Prices.price
+    FROM Prices
+    JOIN Articles ON Prices.article_no = Articles.article_no
+    JOIN Providers ON Prices.provider_no = Providers.provider_no
+    ORDER BY Articles.article_no;
+
+| article_no | article    | provider_no | provider    | price |
+| ---------- | ---------- | ----------- | ----------- | ----- |
+| 101        | US Dollar  | 0001        | Flutterwave | 1000  |
+| 101        | US Dollar  | 0001        | Flutterwave | 1800  |
+| 101        | US Dollar  | 0002        | Paystack    | 1500  |
+| 102        | EU Pounds  | 0001        | Flutterwave | 1200  |
+| 102        | EU Pounds  | 0003        | Stripe      | 2100  |
+| 103        | EU Euro    | 0002        | Paystack    | 5000  |
+| 104        | SWIZ Swiss | 0002        | Paystack    | 500   |
+| 104        | SWIZ Swiss | 0003        | Stripe      | 2000  |
+
+---
+
+[View on DB Fiddle](https://www.db-fiddle.com/f/7bmFueK5xmNaQKw6k2YB5j/2)
