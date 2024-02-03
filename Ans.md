@@ -29,7 +29,7 @@ Limited Scalability: The flat structure may not scale well with thousands of ent
 
 ## ANSWER 2
 
-![image](https://github.com/coderboy-exe/info-challenge/assets/71130767/38a1a1d3-e6ac-4ad5-8d1e-2c2822a6f8a0)
+![PriceTracker](https://github.com/coderboy-exe/info-challenge/assets/71130767/4ec504a6-4b4f-4068-a2a7-3d0b773accf8)
 
 
 
