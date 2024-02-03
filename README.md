@@ -28,11 +28,14 @@ git clone https://github.com/coderboy-exe/info-strat.git
 # Navigate to the project directory
 cd info-strat
 
-# Create and activate your virtual environment (my_env)
+# Create a virtual environment (my_env)
 python -m venv my-env
 
-source my-env/Scripts/activate (Windows --> Assuming you are using a bash terminal)
-source my-env/bin/activate (Linux)
+# Activate your virtual environment
+# Windows (Assuming you are using a bash terminal)
+source my-env/Scripts/activate
+# Linux
+source my-env/bin/activate 
 
 # Install dependencies
 pip install -r requirements.txt
@@ -56,11 +59,11 @@ Access the application at [http://localhost:8000](http://localhost:8000).
 
 ## API Documentation
 
-Check out the comprehensive Postman documentation [here](https://documenter.getpostman.com/view/27182139/2s9YyvCLSQ)
+Check out the comprehensive [Postman documentation](https://documenter.getpostman.com/view/27182139/2s9YyvCLSQ)
 
 ## Integration Tests
 
-Run the **Integration Tests** folder in the Postman collection
+Run the **"Integration Tests"** folder in the [Postman collection](https://documenter.getpostman.com/view/27182139/2s9YyvCLSQ)
 
 All tests should pass
 
@@ -69,7 +72,7 @@ Refer to the [API documentation](https://documenter.getpostman.com/view/27182139
 
 ## Design Questions
 
-Solution to the theoretical questionscan be found in the **Answers.md** file [here](Answers.md)
+Solution to the theoretical design questions can be found in the [**Answers.md**](Answers.md) file
 
 ## Contributing
 
