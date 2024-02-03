@@ -1,9 +1,9 @@
+
+
 ### SQL CMD
 
-```bash
-# Schema SQL
-```
 ```sql
+# MySQL 5.7+
 
 CREATE TABLE Providers (
 	provider_no int NOT NULL PRIMARY KEY,
@@ -50,9 +50,6 @@ VALUES
 
 ```  
 
-```bash
-# Query SQL
-```
 ```sql
 SELECT 
 Articles.article_no,
