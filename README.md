@@ -12,7 +12,7 @@
 
 ## Overview
 
-A Simple API that tracks different Providers price quotes for different artifacts, built as a solutio to the infoStrategy asssessment
+A Simple REST API that tracks different Providers price quotes for different Artifacts, built as a solution to the infoStrategy asssessment
 
 ## Prerequisites
 
