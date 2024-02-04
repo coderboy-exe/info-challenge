@@ -8,7 +8,6 @@
 - [API Documentation](#api-documentation)
 - [Integration Tests](#integration-tests)
 - [Design Questions](#design-questions)
-- [Contributing](#contributing)
 - [License](#license)
 
 ## Overview
@@ -74,11 +73,6 @@ Refer to the [API documentation](https://documenter.getpostman.com/view/27182139
 
 Solution to the theoretical design questions can be found in the [**Answers.md**](Answers.md) file
 
-## Contributing
-
-Contributions are highly welcomed.
-
-If you want to contribute to this project, feel free to create a fork, submit an issue, feature request, or pull requests.
 
 ## License
 
