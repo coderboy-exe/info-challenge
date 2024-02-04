@@ -28,8 +28,8 @@ Limited Scalability: The flat structure may not scale well with thousands of ent
 
 
 ## ANSWER 2
+![PriceTracker drawio](https://github.com/coderboy-exe/info-strat/assets/71130767/3f22580f-0ef3-4994-8388-42514a24c468)
 
-![PriceTracker](https://github.com/coderboy-exe/info-challenge/assets/71130767/4ec504a6-4b4f-4068-a2a7-3d0b773accf8)
 
 
 
